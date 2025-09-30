@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Dink Manager",
+  "name": "Dink Manager - The Court Management",
   "icons": [
     {
       "src": "favicon.ico",

@@ -50,15 +50,16 @@ export default function App() {
   // -------------------
   // Player Handlers
   // -------------------
-  const handleAddPlayer = (name) => {
-    const newPlayer = {
-      id: Date.now(),
-      name,
-      status: "waiting",
-      matches: 0,
-    };
-    setPlayers((prev) => [...prev, newPlayer]);
+const handleAddPlayer = (name, level) => {
+  const newPlayer = {
+    id: Date.now(),
+    name,
+    level,        // add level here
+    status: "waiting",
+    matches: 0,
   };
+  setPlayers([...players, newPlayer]);
+};
 
   const handleRemovePlayer = (playerId) => {
     setPlayers((prev) => prev.filter((p) => p.id !== playerId));
@@ -118,12 +119,24 @@ export default function App() {
     );
   };
 
+  
+  // -------------------
+  // Leveling Update
+  // -------------------
+  const handleUpdateLevel = (playerId, newLevel) => {
+  setPlayers((prev) =>
+    prev.map((p) =>
+      p.id === playerId ? { ...p, level: newLevel } : p
+    )
+  );
+};
+
   // -------------------
   // Render
   // -------------------
   return (
     <div className="p-4 w-full mx-auto">
-      <h1 className="text-2xl font-bold mb-4">🏓 Pickleball Court Manager</h1>
+      <h1 className="text-2xl font-bold mb-4">🏓 Dink Manager</h1>
 
       {/* Add & Clear Courts */}
       <div className="mt-4 flex gap-2">
@@ -152,14 +165,13 @@ export default function App() {
       />
 
       {/* Player Section */}
-      <div className="mt-8">
-        <PlayerTable
-          players={players}
-          onAddPlayer={handleAddPlayer}
-          onRemovePlayer={handleRemovePlayer}
-          onClearAll={handleClearAllPlayers}
-        />
-      </div>
+      <PlayerTable
+  players={players}
+  onAddPlayer={handleAddPlayer}
+  onRemovePlayer={handleRemovePlayer}
+  onClearAll={handleClearAllPlayers}
+  onUpdateLevel={handleUpdateLevel}
+/>
     </div>
   );
 }
