@@ -57,6 +57,8 @@ const handleAddPlayer = (name, level) => {
     level,        // add level here
     status: "waiting",
     matches: 0,
+    waitStart: Date.now(), // timestamp when they started waiting
+    waitTime: 0  
   };
   setPlayers([...players, newPlayer]);
 };
@@ -97,27 +99,30 @@ const handleAddPlayer = (name, level) => {
     );
   };
 
-  const removePlayerFromCourt = (courtId, playerId, isEndGame = false) => {
-    setCourts((prevCourts) =>
-      prevCourts.map((court) =>
-        court.id === courtId
-          ? { ...court, players: court.players.filter((id) => id !== playerId) }
-          : court
-      )
-    );
+  // REMOVE PLAYERS FROM COURT
+const removePlayerFromCourt = (courtId, playerId, isEndGame = false) => {
+  setCourts((prevCourts) =>
+    prevCourts.map((court) =>
+      court.id === courtId
+        ? { ...court, players: court.players.filter((id) => id !== playerId) }
+        : court
+    )
+  );
 
-    setPlayers((prevPlayers) =>
-      prevPlayers.map((p) =>
-        p.id === playerId
-          ? {
-              ...p,
-              status: "waiting",
-              matches: isEndGame ? p.matches + 1 : p.matches,
-            }
-          : p
-      )
-    );
-  };
+  setPlayers((prevPlayers) =>
+    prevPlayers.map((p) =>
+      p.id === playerId
+        ? {
+            ...p,
+            status: "waiting",
+            matches: isEndGame ? p.matches + 1 : p.matches,
+            waitStart: isEndGame ? Date.now() : p.waitStart ?? Date.now(), // ⏱ reset only on End Game
+          }
+        : p
+    )
+  );
+};
+
 
   
   // -------------------

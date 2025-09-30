@@ -61,6 +61,7 @@ export default function PlayerTable({ players, onAddPlayer, onRemovePlayer, onCl
             <th className="p-2 text-left">Name</th>
             <th className="p-2">Level</th>
             <th className="p-2">Status</th>
+            <th className="p-2">Wait Time</th>
             <th className="p-2">Matches</th>
             <th className="p-2">Action</th>
           </tr>
