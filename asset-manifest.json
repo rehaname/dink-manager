@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dink-manager/static/css/main.6af37d57.css",
-    "main.js": "/dink-manager/static/js/main.a6062332.js",
+    "main.css": "/dink-manager/static/css/main.4134ae5a.css",
+    "main.js": "/dink-manager/static/js/main.c6118415.js",
     "static/js/453.031c1fdd.chunk.js": "/dink-manager/static/js/453.031c1fdd.chunk.js",
     "index.html": "/dink-manager/index.html",
-    "main.6af37d57.css.map": "/dink-manager/static/css/main.6af37d57.css.map",
-    "main.a6062332.js.map": "/dink-manager/static/js/main.a6062332.js.map",
+    "main.4134ae5a.css.map": "/dink-manager/static/css/main.4134ae5a.css.map",
+    "main.c6118415.js.map": "/dink-manager/static/js/main.c6118415.js.map",
     "453.031c1fdd.chunk.js.map": "/dink-manager/static/js/453.031c1fdd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6af37d57.css",
-    "static/js/main.a6062332.js"
+    "static/css/main.4134ae5a.css",
+    "static/js/main.c6118415.js"
   ]
 }
