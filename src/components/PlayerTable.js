@@ -40,7 +40,7 @@ export default function PlayerTable({ players, onAddPlayer, onRemovePlayer, onCl
 
         <button
           type="submit"
-          className="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 w-1/6 text-sm"
+          className="bg-[#1E3A8A] text-white px-3 py-2 rounded hover:bg-[#243c90] w-1/6 text-sm"
         >
           ➕ Add
         </button>
@@ -49,7 +49,7 @@ export default function PlayerTable({ players, onAddPlayer, onRemovePlayer, onCl
       {/* Clear All Players */}
       <button
         onClick={onClearAll}
-        className="bg-red-500 text-white px-3 py-1 text-sm rounded hover:bg-red-600 mb-3"
+        className="bg-[#065F46] text-white px-3 py-1 text-sm rounded hover:bg-[#0b7a58] mb-3"
       >
         🗑️ Clear All Players
       </button>

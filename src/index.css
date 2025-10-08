@@ -9,6 +9,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc; /* very light gray */
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3 {
+  color: #1E3A8A; /* navy */
 }
 
 code {

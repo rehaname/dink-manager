@@ -28,13 +28,13 @@ export default function CourtCard({ court, players, onAssign, onRemove, onRemove
   };
 
   return (
-    <div className="border rounded-xl p-4 shadow-lg bg-white hover:shadow-xl transition">
+    <div className="border rounded-xl p-4 shadow-md bg-white hover:shadow-lg transition">
       {/* Court Header */}
       <div className="flex justify-between items-center mb-3">
-        <h2 className="font-semibold text-lg">{court.name}</h2>
+        <h2 className="font-semibold text-lg text-[#1E3A8A]">{court.name}</h2>
         <span
           className={`text-sm font-medium px-2 py-1 rounded ${
-            isFull ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"
+            isFull ? "bg-[#fee2e2] text-[#b91c1c]" : "bg-[#d1fae5] text-[#065F46]"
           }`}
         >
           {status}

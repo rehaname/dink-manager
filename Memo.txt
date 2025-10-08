@@ -1,0 +1,10 @@
+1. Create a Organization / New account for Dink Manager
+2. Create a new Project for Each Client
+3. Create a GH-Page for Each Client
+4. Only add the GH-Page for Each Client
+5. Client Proposal for RG and Generic Proposal
+6. Add Match History & Game Duration
+7. Add Reports
+8. Add Create Match Ups
+9. Reorganize Design for easier Picking of Players
+10. Add Larger Popup when Called For a Game

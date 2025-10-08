@@ -141,20 +141,29 @@ const removePlayerFromCourt = (courtId, playerId, isEndGame = false) => {
   // -------------------
   return (
     <div className="p-4 w-full mx-auto">
-      <h1 className="text-2xl font-bold mb-4">🏓 Dink Manager</h1>
+      <div className="flex items-center gap-2 mb-4">
+  <img
+    src={`${process.env.PUBLIC_URL}/logo512.png`}
+    alt="Picke & Co Logo"
+    className="w-11 h-11 object-contain"
+  />
+  <h1 className="text-2xl font-bold text-[#1E3A8A]">
+    The Pickle & Co 1016
+  </h1>
+</div>
 
       {/* Add & Clear Courts */}
       <div className="mt-4 flex gap-2">
         <button
           onClick={handleAddCourt}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          className="bg-[#1E3A8A] text-white px-4 py-2 rounded hover:bg-[#243c90]"
         >
           ➕ Add Court
         </button>
 
         <button
           onClick={handleClearExtraCourts}
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          className="bg-[#065F46] text-white px-4 py-2 rounded hover:bg-[#0b7a58]"
         >
           🗑️ Clear Extra Courts
         </button>
@@ -177,6 +186,11 @@ const removePlayerFromCourt = (courtId, playerId, isEndGame = false) => {
   onClearAll={handleClearAllPlayers}
   onUpdateLevel={handleUpdateLevel}
 />
+{/* Footer */}
+<footer className="text-center text-gray-400 text-xs mt-8">
+  Powered by <span className="font-semibold text-gray-500">Dink Manager</span>
+</footer>
+
     </div>
   );
 }
