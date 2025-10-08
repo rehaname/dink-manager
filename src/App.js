@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import CourtList from "./components/CourtList";
 import PlayerTable from "./components/PlayerTable";
 import { saveState, loadState } from "./utils/storage";
+import { Routes, Route, Link } from "react-router-dom";
+import DisplayPage from "./pages/DisplayPage";
+
 
 export default function App() {
   // Load from storage OR fallback to default
@@ -22,6 +25,11 @@ export default function App() {
   // 🔄 Save whenever courts or players change
   useEffect(() => {
     saveState({ courts, players });
+    if ("BroadcastChannel" in window) {
+      const bc = new BroadcastChannel("dink_manager");
+      bc.postMessage({ type: "STATE_UPDATE", payload: { courts, players } });
+      bc.close();
+      }
   }, [courts, players]);
 
   // -------------------
@@ -140,57 +148,81 @@ const removePlayerFromCourt = (courtId, playerId, isEndGame = false) => {
   // Render
   // -------------------
   return (
-    <div className="p-4 w-full mx-auto">
-      <div className="flex items-center gap-2 mb-4">
-  <img
-    src={`${process.env.PUBLIC_URL}/logo512.png`}
-    alt="Picke & Co Logo"
-    className="w-11 h-11 object-contain"
-  />
-  <h1 className="text-2xl font-bold text-[#1E3A8A]">
-    The Pickle & Co 1016
-  </h1>
-</div>
+  <Routes>
+    {/* Manager page (your current UI) */}
+    <Route
+      path="/"
+      element={
+        <div className="p-4 w-full mx-auto">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <img
+                src={`${process.env.PUBLIC_URL}/logo512.png`}
+                alt="Picke & Co Logo"
+                className="w-11 h-11 object-contain"
+              />
+              <h1 className="text-2xl font-bold text-[#1E3A8A]">
+                The Pickle & Co 1016
+              </h1>
+            </div>
 
-      {/* Add & Clear Courts */}
-      <div className="mt-4 flex gap-2">
-        <button
-          onClick={handleAddCourt}
-          className="bg-[#1E3A8A] text-white px-4 py-2 rounded hover:bg-[#243c90]"
-        >
-          ➕ Add Court
-        </button>
+            {/* Open the display in a new window/monitor */}
+            <Link
+              to="/display"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-[#1E3A8A] underline hover:no-underline"
+            >
+              Open Display ↗
+            </Link>
+          </div>
 
-        <button
-          onClick={handleClearExtraCourts}
-          className="bg-[#065F46] text-white px-4 py-2 rounded hover:bg-[#0b7a58]"
-        >
-          🗑️ Clear Extra Courts
-        </button>
-      </div>
+          {/* Add & Clear Courts */}
+          <div className="mt-4 flex gap-2">
+            <button
+              onClick={handleAddCourt}
+              className="bg-[#1E3A8A] text-white px-4 py-2 rounded hover:bg-[#243c90]"
+            >
+              ➕ Add Court
+            </button>
 
-      {/* Court Section */}
-      <CourtList
-        courts={courts}
-        players={players}
-        onAssign={assignPlayerToCourt}
-        onRemove={removePlayerFromCourt}
-        onRemoveCourt={handleRemoveCourt}
-      />
+            <button
+              onClick={handleClearExtraCourts}
+              className="bg-[#065F46] text-white px-4 py-2 rounded hover:bg-[#0b7a58]"
+            >
+              🗑️ Clear Extra Courts
+            </button>
+          </div>
 
-      {/* Player Section */}
-      <PlayerTable
-  players={players}
-  onAddPlayer={handleAddPlayer}
-  onRemovePlayer={handleRemovePlayer}
-  onClearAll={handleClearAllPlayers}
-  onUpdateLevel={handleUpdateLevel}
-/>
-{/* Footer */}
-<footer className="text-center text-gray-400 text-xs mt-8">
-  Powered by <span className="font-semibold text-gray-500">Dink Manager</span>
-</footer>
+          {/* Court Section */}
+          <CourtList
+            courts={courts}
+            players={players}
+            onAssign={assignPlayerToCourt}
+            onRemove={removePlayerFromCourt}
+            onRemoveCourt={handleRemoveCourt}
+          />
 
-    </div>
-  );
+          {/* Player Section */}
+          <PlayerTable
+            players={players}
+            onAddPlayer={handleAddPlayer}
+            onRemovePlayer={handleRemovePlayer}
+            onClearAll={handleClearAllPlayers}
+            onUpdateLevel={handleUpdateLevel}
+          />
+
+          {/* Footer */}
+          <footer className="text-center text-gray-400 text-xs mt-8">
+            Powered by <span className="font-semibold text-gray-500">Dink Manager</span>
+          </footer>
+        </div>
+      }
+    />
+
+    {/* Read-only big monitor page */}
+    <Route path="/display" element={<DisplayPage />} />
+  </Routes>
+);
+
 }
