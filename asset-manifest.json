@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/dink-manager/static/css/main.4134ae5a.css",
-    "main.js": "/dink-manager/static/js/main.c6118415.js",
-    "static/js/453.031c1fdd.chunk.js": "/dink-manager/static/js/453.031c1fdd.chunk.js",
-    "index.html": "/dink-manager/index.html",
-    "main.4134ae5a.css.map": "/dink-manager/static/css/main.4134ae5a.css.map",
-    "main.c6118415.js.map": "/dink-manager/static/js/main.c6118415.js.map",
-    "453.031c1fdd.chunk.js.map": "/dink-manager/static/js/453.031c1fdd.chunk.js.map"
+    "main.css": "./static/css/main.4134ae5a.css",
+    "main.js": "./static/js/main.779f6e6e.js",
+    "static/js/453.031c1fdd.chunk.js": "./static/js/453.031c1fdd.chunk.js",
+    "index.html": "./index.html",
+    "main.4134ae5a.css.map": "./static/css/main.4134ae5a.css.map",
+    "main.779f6e6e.js.map": "./static/js/main.779f6e6e.js.map",
+    "453.031c1fdd.chunk.js.map": "./static/js/453.031c1fdd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4134ae5a.css",
-    "static/js/main.c6118415.js"
+    "static/js/main.779f6e6e.js"
   ]
 }
